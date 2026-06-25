@@ -67,6 +67,15 @@ public class Queue<T> {
   public int size(){
     return this.size;
   }
+
+  public mostrar() {
+    String resultado;
+    Node<T> actual = this.first;
+
+    while (actual != null) {
+      //faltaaaaaaaaaaaaaaaaaaaaaaaa 
+      //bucleeee y retornar el strinng d  d  
+  }
   
   
 }
