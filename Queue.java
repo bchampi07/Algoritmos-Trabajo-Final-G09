@@ -1,19 +1,23 @@
 public class Node<T> {
-  private T data;
-  private Node<T> next;
+    private T data;
+    private Node<T> next;
 
-  public Node(T data){
-    this.data = data;
-    this.next = null;
-  }
+    public Node(T data) {
+        this.data = data;
+        this.next = null;
+    }
 
-  public T getData(){
-    return this.data;
-  }
+    public T getData() {
+        return data;
+    }
 
-  public Node<T> getNext(){
-    return this.next;
-  }
+    public Node<T> getNext() {
+        return next;
+    }
+
+    public void setNext(Node<T> next) {
+        this.next = next;
+    }
 }
 
 
@@ -33,15 +37,16 @@ public class Queue<T> {
     if(isEmpty()){
       first = last = nuevoNodo;
     } else {
-      last.getNext() = nuevoNodo;
+      last.setNext() = nuevoNodo;
       last = nuevoNodo;
     }
-    this.size++;
+    size++;
   }
 
   public T dequeue() {
     if(isEmpty()) {
       System.out.println("La cola esta vacia");
+      return null;
     }
     T data = first.getData();
     first = first.getNext();
@@ -49,13 +54,14 @@ public class Queue<T> {
     if(first == null) {
       last = null;
     }
-    this.size--;
+    size--;
     return data;
   }
 
   public T peek() {
     if(isEmpty()) {
       System.out.println("La cola esta vacia");
+      return null;
     }
     return first.getData();
   }
@@ -65,19 +71,21 @@ public class Queue<T> {
   }
 
   public int size(){
-    return this.size;
+    return size;
   }
+    public void mostrar() {
+        if (isEmpty()) {
+            System.out.println("No hay elementos en la cola.");
+            return;
+        }
 
-  public mostrar() {
-    String resultado;
-    Node<T> actual = this.first;
+        Node<T> actual = first;
 
-    while (actual != null) {
-      //faltaaaaaaaaaaaaaaaaaaaaaaaa 
-      //bucleeee y retornar el strinng d  d  
-  }
-  
-  
+        while (actual != null) {
+            System.out.println(actual.getData());
+            actual = actual.getNext();
+        }
+    }
 }
 
 
