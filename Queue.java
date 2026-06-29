@@ -21,12 +21,12 @@ public class Node<T> {
 }
 
 
-public class Queue<T> {
+public class LinkedQueue<T> {
   private Node<T> first;
   private Node<T> last;
   private int size;
 
-  public Queue(){
+  public LinkedQueue(){
     this.first = null;
     this.last = null;
     this.size = 0;
