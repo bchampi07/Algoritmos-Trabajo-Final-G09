@@ -1,0 +1,44 @@
+public class BibliotecaService {
+  private LinkedBST<Libro> biblioteca;
+  public BibliotecaService(){
+    biblioteca = new LinkedBST<>();
+  }
+  public void registrarLibro (Libro libro) throws ItemDuplicated {
+    biblioteca.insert(libro);
+    System.out.println("Libro registrado correctamente")
+  }
+  public Libro buscarLibro(int codigo) throws ItemNotFound {
+    Libro buscado = new Libro(codigo,"","","",0,"");
+    return biblioteca.search(buscado);
+  }
+  public void mostrarLibros(){
+    System.out.println(biblioteca.getInOrder());
+  }
+  public void eliminarLibro(int codigo) throws ExceptionIsEmpty, ItemNotFound{
+    Libro libro = buscarLibro(codigo);
+    biblioteca.delete(libro);
+    System.out.println("Libro eliminado correctamente");
+  }
+  public void cambiarEstado(int codigo, String estado) throws ItemNotFound{
+    Libro libro = buscarLibro(codigo);
+    libro.setEstado(estado);
+  }
+  public void mostrarDisponibles(){
+    mostrarPorEstado("Disponible");
+  }
+    public void mostrarPrestados(){
+    mostrarPorEstado("Prestado");
+  }
+  public void mostrarPorEstado(String estado){
+    String libros = biblioteca.getInOrder();
+    if (libros.contains(estado)){
+      System.out.println(libros);
+    } else{
+      System.out.println("No existen libros con ese estado");
+    }
+  }
+  public void reporte(){
+    int total = biblioteca.countAllNodes();
+    System.out.println("Total libros: " + total);
+  }
+}
