@@ -1,0 +1,48 @@
+public class PrestamoService{
+  private Queue<SolicitudPrestamo> colaSolicitudes;
+  private BibliotecaService biblioteca;
+  public PrestamoService(BibliotecaService biblioteca){
+    this.biblioteca = biblioteca;
+    colaSolicitudes = new Queue<>();
+  }
+  public void registrarSolicitud(SolicitudPrestamos solicitud){
+    colaSolicitudes.enqueue(solicitud);
+    System.out.println("Solicitud registrada");
+  }
+  public void mostrarSolicitudes(){
+    colaSolicitudes.mostrar();
+  }
+  public void siguienteSolicitud(){
+    System.out.println(colaSolicitudes.peek());
+  }
+  public void atenderSolicitud(){
+    SolicitudPrestamo solicitud = colaSolicitudes.dequeue();
+    if (solicitud==null){
+      return;
+    } 
+    try {
+      Libro libro = biblioteca.buscarLibro(solicitud.getCodigoLibro());
+      if(libro.estaDisponible()){
+        libro.setEstado("Prestado");
+        System.out.println("Prestamo realizado correctamente");
+        } else {
+        System.out.println9("El libro no esta disponible");
+      }
+    } catch(ItemNotFound e){
+      System.out.println("Libro no encontrado");
+    }
+  }
+  public void devolverLibro(int codigo){
+    try{ 
+      Libro libro = biblioteca.buscarLibro(codigo);
+      libro.setEstado("Disponible");
+      System.out.println("Devolucion realizada correctamente");
+    } catch(ItemNotFound e){
+      System.out.println("Libro no encontrado");
+    }
+  }
+  public int solicitudesPendientes(){
+    return colaSolicitudes.size();
+  }
+}
+  
