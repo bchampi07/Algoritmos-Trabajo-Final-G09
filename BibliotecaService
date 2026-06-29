@@ -11,6 +11,38 @@ public class BibliotecaService {
     Libro buscado = new Libro(codigo,"","","",0,"");
     return biblioteca.search(buscado);
   }
+
+  public void buscarPorTitulo(String titulo) {
+    String libros = biblioteca.getInOrder();
+
+    if(libros.toLowerCase().contains(titulo.toLowerCase())) {
+      System.out.println(libros);
+    } else {
+      System.out.println("No se encontraron libros con ese título");
+    }
+  }
+
+  public void buscarPorAutor(String autor) {
+    String libros = biblioteca.getInOrder();
+
+    if(libros.toLowerCase().contains(autor.toLowerCase())) {
+      System.out.println(libros);
+    } else {
+      System.out.println("No se encontraron libros con ese autor");
+    }
+  }
+
+  public void buscarPorCategoria(String categoria) {
+    String libros = biblioteca.getInOrder();
+
+    if(libros.toLowerCase().contains(categoria.toLowerCase())) {
+      System.out.println(libros);
+    } else {
+      System.out.println("No se encontraron libros con esa categoria");
+    }
+  }
+
+
   public void mostrarLibros(){
     System.out.println(biblioteca.getInOrder());
   }
