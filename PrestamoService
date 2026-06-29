@@ -5,7 +5,7 @@ public class PrestamoService{
     this.biblioteca = biblioteca;
     colaSolicitudes = new Queue<>();
   }
-  public void registrarSolicitud(SolicitudPrestamos solicitud){
+  public void registrarSolicitud(SolicitudPrestamo solicitud){
     colaSolicitudes.enqueue(solicitud);
     System.out.println("Solicitud registrada");
   }
@@ -13,8 +13,15 @@ public class PrestamoService{
     colaSolicitudes.mostrar();
   }
   public void siguienteSolicitud(){
-    System.out.println(colaSolicitudes.peek());
+    SolicitudPrestamo solicitud = colaSolicitudes.peek();
+    if(solicitud == null) {
+      System.out.println("No hay solicitudes pendientes");
+    } else {
+      System.out.println(solicitud);
+    }
+
   }
+
   public void atenderSolicitud(){
     SolicitudPrestamo solicitud = colaSolicitudes.dequeue();
     if (solicitud==null){
@@ -26,7 +33,7 @@ public class PrestamoService{
         libro.setEstado("Prestado");
         System.out.println("Prestamo realizado correctamente");
         } else {
-        System.out.println9("El libro no esta disponible");
+        System.out.println("El libro no esta disponible");
       }
     } catch(ItemNotFound e){
       System.out.println("Libro no encontrado");
@@ -35,12 +42,19 @@ public class PrestamoService{
   public void devolverLibro(int codigo){
     try{ 
       Libro libro = biblioteca.buscarLibro(codigo);
-      libro.setEstado("Disponible");
-      System.out.println("Devolucion realizada correctamente");
+
+      if(libro.estaDisponible()) {
+        System.out.println("El libro ya esta disponible");
+      } else{
+        libro.setEstado("Disponible");
+        System.out.println("Devolucion realizada correctamente");
+      }
+
     } catch(ItemNotFound e){
       System.out.println("Libro no encontrado");
     }
   }
+
   public int solicitudesPendientes(){
     return colaSolicitudes.size();
   }
