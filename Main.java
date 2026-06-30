@@ -209,6 +209,19 @@ public class Main {
 
       sc.close();
   }
+  public static String leerTextoValido(Scanner sc, String Mensaje){
+    String texto;
+    do {
+      System.out.print(mensaje);
+      texto = sc.nextline();
+
+      if (texto.trim().isEmpty()){
+        System.out.println("El campo no puede estar vacio");
+      }
+    } while (texto.trim().isEmpty());
+    return texto;
+  }
+  
   public static void cargarLibroIniciales(BibliotecaService biblioteca){
     try{
        biblioteca.registrarLibro(new Libro(101, "Programacion en Java", "Herbert Schildt", "Programacion", 2022, "Disponible"));
