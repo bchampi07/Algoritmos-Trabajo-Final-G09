@@ -40,14 +40,11 @@ public class Main {
                 int codigo = sc.nextInt();
                 sc.nextLine();
 
-                System.out.print("Título: ");
-                String titulo = sc.nextLine();
+                String titulo = leerTextoValido(sc, "Titulo: ");
 
-                System.out.print("Autor: ");
-                String autor = sc.nextLine();
+                String autor = leerTextoValido(sc, "Autor: ");
 
-                System.out.print("Categoria: ");
-                String categoria = sc.nextLine();
+                String categoria = leerTextoValido(sc, "Categoria: ");
 
                 System.out.print("Anio: ");
                 int anio = sc.nextInt();
@@ -112,21 +109,17 @@ public class Main {
               int codigo = sc.nextInt();
               sc.nextLine();
               
-              System.out.print("Nuevo titulo: ");
-              String titulo = sc.nextLine();
+              String titulo = leerTextoValido(sc, "Nuevo Titulo: ");
               
-              System.out.print("Nuevo autor: ");
-              String autor = sc.nextLine();
+               String autor = leerTextoValido(sc, "Nuevo Autor: ");
               
-              System.out.print("Nueva categoria: ");
-              String categoriaNueva = sc.nextLine();
+              String categoriaNueva = leerTextoValido(sc, "Nueva Categoria: ");
               
               System.out.print("Nuevo anio: ");
               int anio = sc.nextInt();
               sc.nextLine();
               
-              System.out.print("Estado: ");
-              String estado = sc.nextLine();
+              String estado = leerTextoValido(sc, "Estado: ");
               
               biblioteca.modificarLibro(codigo, titulo, autor, categoriaNueva, anio, estado);
               break;
@@ -146,18 +139,15 @@ public class Main {
           }
           
           case 9: {
-            System.out.print("Codigo estudiante: ");
-            String codigoEstudiante = sc.nextLine();
+            String codigoEstudiante = leerTextoValido(sc, "Codigo estudiante: ");
             
-            System.out.print("Nombre estudiante: ");
-            String nombre = sc.nextLine();
+            String nombre = leerTextoValido(sc, "Nombre estudiante: ");
             
             System.out.print("Codigo libro: ");
             int codigoLibroSolicitud = sc.nextInt();
             sc.nextLine();
             
-            System.out.print("Fecha: ");
-            String fecha = sc.nextLine();
+            String fecha = leerTextoValido(sc, "Fecha: ");
             
             SolicitudPrestamo solicitud =
               new SolicitudPrestamo(codigoEstudiante, nombre, codigoLibroSolicitud, fecha);
