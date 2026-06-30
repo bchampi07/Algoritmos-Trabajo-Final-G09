@@ -15,11 +15,11 @@ public class SolicitudPrestamo {
     return codigoLibro;
   }
 
-  @override
-  pubic String toString(){
+  @Override
+  public String toString(){
     return "Estudiante: " + codigoEstudiante +
             "Nombre: " + nombreEstudiante + 
             "Libro solicitado: " + codigoLibro +
-            "Fecha: " + fechaSolicitud
+            "Fecha: " + fechaSolicitud;
   }
 }
