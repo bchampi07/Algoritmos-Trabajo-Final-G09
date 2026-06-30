@@ -119,10 +119,70 @@ public class Main {
                 System.out.println("No se pudo eliminar");
               }
               break;
-        }
 
+          case 7:
+            System.out.print("Codigo estudiante: ");
+            String codigoEstudiante = sc.nextLine();
+
+            System.out.print("Nombre estudiante: ");
+            String nombre = sc.nextLine();
+
+            System.out.print("Fecha: ");
+            String fecha = sc.nextLine();
+
+            SolicitudPrestamo solicitud =
+              new SolicitudPrestamo(
+                codigoEstudiante,
+                nombre,
+                codigoLibro,
+                fecha
+              );
+            
+            prestamos.registrarSolicitud(solicitud);
+
+            break;
+
+          case 8:
+
+            prestamos.mostrarSolicitudes();
+
+            break;
+
+          case 9:
+
+            prestamos.atenderSolicitud();
+
+            break;
+
+          case 10:
+            System.out.print("Codigo del libro: ");
+
+            int codigoLibro = sc.nextInt();
+            sc.nextLine();
+
+            prestamos.devolverLibro(codigoLibro);
+
+            break;
+
+          case 11:
+
+            biblioteca.reporte(prestamos.solicitudesPendientes());
+
+            break;
+
+          case 12:
+
+            System.out.println("Hasta luego.");
+
+            break;
+
+          default:
+            System.out.println("Opcion invalida.");
+
+        } 
         
-      }
-      
+      }while(opcion!=12);
+
+      sc.close();
   }
 }
