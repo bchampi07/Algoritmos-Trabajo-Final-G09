@@ -6,10 +6,15 @@ class Node<T>{
     this.data=data;
     this.next=null;
   }
-  public getData(){
+  public T getData() {
     return this.data;
   }
-  public getNext(){
+
+  public Node<T> getNext() {
     return this.next;
+  }
+
+  public void setNext(Node<T> next) {
+    this.next = next;
   }
 }
