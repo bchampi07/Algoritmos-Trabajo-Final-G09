@@ -1,134 +1,128 @@
+public class LinkedBST<T extends Comparable<T>> {
 
+  private NodeBST<T> root;
 
-
-public Class LinkedBST<T extends Comparable<T>> {
-  private Node<T> root;
   public LinkedBST() {
     this.root = null;
   }
 
-  public Node<T> getRoot()
-    return this.root;
-}
-
-public T search(T d) throws ItemNoFound {
-  Node<T> resultado = searchRec(this.root, d);
-
-  if (resultado == null) {
-    throw new ItemNoFound();
+  public boolean isEmpty() {
+    return root == null;
   }
 
-  return resultado.data;
-}
-
-public Node<T> searchRec(Node<T> n, T d) {
-  if (n == null); {
-    return null;
+  public void insert(T data) throws ItemDuplicated {
+    root = insertRec(root, data);
   }
 
-  int cmp = d.compareTo(n.data);
+  private NodeBST<T> insertRec(NodeBST<T> node, T data) throws ItemDuplicated {
+    if(node == null) {
+      return new NodeBST<>(data);
+    }
 
-  if(cmp > 0) {
-    return searchRec(n.right, d);
+    int cmp = data.compareTo(node.data);
 
-  }else if(cmp < 0) {
-    return searchRec(n.left, d);
+    if(cmp < 0) {
+      node.left = insertRec(node.left, data);
+    } else if(cmp > 0) {
+      node.right = insertRec(node.right, data);
+    } else {
+      throw new ItemDuplicated();
+    }
 
-  } else {
-    return n;
-  }
-}
-//------------------------------------------------------
-public void insert(T d) throws ItemDuplicated {
-  this.root = insertRec(this.root, d);
-}
-
-public Node<T> insertRec(Node<T> n, T d) throws ItemDuplicated {
-  if (n == null) {
-    return new Node<>(d);
+    return node;
   }
 
-  int cmp = d.compareTo(n.data);
+  public T search(T data) throws ItemNotFound {
+    NodeBST<T> result = searchRec(root, data);
 
-  if (cmp < 0) {
-    n.left = insertRec(n.left, d);
+    if(result == null) {
+      throw new ItemNotFound();
+    }
 
-  } else if(cmp > 0) {
-    n.right = insertRec(n.right, d);
-
-  } else {
-    throw new ItemDuplicated();
+    return result.data;
   }
 
-  return n;
-}
+  private NodeBST<T> searchRec(NodeBST<T> node, T data) {
+    if(node == null) {
+      return null;
+    }
 
-//---------------------------------------------------
-public void delete(T d) throws ExceptionIsEmpty {
-  if(isEmpty())
-    throw new ExceptionIsEmpty();
+    int cmp = data.compareTo(node.data);
 
-  root = deleteRec(root, d);
-}
-
-public Node<T> deleteRec(Node<T> n, T d) {
-  if (n == null) {
-    return null;
-  }
-  int cmp = d.compareTo(n.data);
-
-if(cmp > 0) {
-  n.right = deleteRec(n.right, d);
-} else if(cmp < 0) {
-  n.left = deleteRec(n.left, d);
-} else {
-  if(n.left == null) {
-    return n.right;
-  }else if(n.right == null) {
-    return n.left;
-
-  } else {
-    try {
-      T minimo = findMinNode(n.right);
-      n.data = miniomo;
-      n.right = deleteRec(n.right, minimo);
-    } catch (ItemNoFound e) {
-      System.out.println(e.getMessage());
+    if(cmp < 0) {
+      return searchRec(node.left, data);
+    } else if(cmp > 0) {
+      return searchRec(node.right, data);
+    } else {
+      return node;
     }
   }
-}
-  return n;
-}
-//---------------------------------------------------
-public boolean isEmpty() {
-  return this.root == null;
-}
-//------------------------------------------------------
-public String getInOrder() {
-  return inOrder(this.root);
-}
 
-private String inOrder(Node<T> n) {
-  if(n == null) {
-    return "";
-  }
-  return inOrder(n.left) + n.data + " " + inOrder(n.right);
-}
-//-----------------------------------------------------------------------------------------
-private T findMinNode(Node<T> node) throws ItemNoFound {
-  if(node == null) {
-    throw new ItemNoFound ("No se encuentra el valor minimo");
+  public void delete(T data) throws ExceptionIsEmpty {
+    if(isEmpty()) {
+      throw new ExceptionIsEmpty();
+    }
+
+    root = deleteRec(root, data);
   }
 
-  Node<T> actual = node;
-  while(actual.left != null) {
-    actual = actual.left;
+  private NodeBST<T> deleteRec(NodeBST<T> node, T data) {
+    if(node == null) {
+      return null;
+    }
+
+    int cmp = data.compareTo(node.data);
+
+    if(cmp < 0) {
+      node.left = deleteRec(node.left, data);
+    } else if(cmp > 0) {
+      node.right = deleteRec(node.right, data);
+    } else {
+      if(node.left == null) {
+        return node.right;
+      }
+
+      if(node.right == null) {
+        return node.left;
+      }
+
+      NodeBST<T> min = findMin(node.right);
+      node.data = min.data;
+      node.right = deleteRec(node.right, min.data);
+    }
+
+    return node;
   }
-  return search(actual.data);
+
+  private NodeBST<T> findMin(NodeBST<T> node) {
+    while(node.left != null) {
+      node = node.left;
+    }
+
+    return node;
+  }
+
+  public String getInOrder() {
+    return inOrder(root);
+  }
+
+  private String inOrder(NodeBST<T> node) {
+    if(node == null) {
+      return "";
+    }
+
+    return inOrder(node.left) + node.data + "\n" + inOrder(node.right);
+  }
+
+  public int countAllNodes() {
+    return countAllNodesRec(root);
+  }
+
+  private int countAllNodesRec(NodeBST<T> node) {
+    if(node == null) {
+      return 0;
+    }
+
+    return 1 + countAllNodesRec(node.left) + countAllNodesRec(node.right);
+  }
 }
-
-  return isValidBSTRec(n.left, min, n.data) && isValidBSTRec(n.right, n.data, max);
-}
-
-
-  
