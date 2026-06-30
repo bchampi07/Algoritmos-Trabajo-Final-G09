@@ -232,6 +232,17 @@ public class Main {
        biblioteca.registrarLibro(new Libro(118, "Calculo I", "James Stewart", "Matematica", 2018, "Disponible"));
        biblioteca.registrarLibro(new Libro(119, "Algebra Lineal", "Gilbert Strang", "Matematica", 2016, "Disponible"));
        biblioteca.registrarLibro(new Libro(120, "Estadistica", "Walpole", "Matematica", 2015, "Disponible"));
-    }
+
+       biblioteca.registrarLibro(new Libro(121, "Cisco CCNA", "Wendell Odom", "Redes", 2020, "Disponible"));
+       biblioteca.registrarLibro(new Libro(122, "Seguridad Informatica", "Willian Stallings", "Seguridad", 2017, "Prestado"));
+       biblioteca.registrarLibro(new Libro(123, "Criptografia", "Bruce Schneier", "Seguridad", 2015, "Disponible"));
+       biblioteca.registrarLibro(new Libro(124, "Cloud Computing", "Rajkumar Buyya", "Cloud", 2013, "Disponible"));
+       biblioteca.registrarLibro(new Libro(125, "Internet de las Cosas", "Samuel Greengard", "IoT", 2021, "Disponible"));
+       biblioteca.registrarLibro(new Libro(126, "Desarrollo Web", "Jon Duckett", "Programacion", 2014, "Disponible"));
+       biblioteca.registrarLibro(new Libro(127, "HTML y XP", "Jon Duckett", "Programacion", 2011, "Disponible"));
+       biblioteca.registrarLibro(new Libro(128, "JavaScript Moderno", "Kyle Simpson", "Programacion", 2020, "Prestado"));
+       biblioteca.registrarLibro(new Libro(129, "Scrum y XP", "Henrik Kniberg", "Software", 2015, "Disponible"));
+       biblioteca.registrarLibro(new Libro(130, "UML Gota a Gota", "Marting Fowler", "Software", 2004, "Disponible"));
+      }
   }
 }
