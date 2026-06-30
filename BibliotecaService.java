@@ -5,7 +5,7 @@ public class BibliotecaService {
   }
   public void registrarLibro (Libro libro) throws ItemDuplicated {
     biblioteca.insert(libro);
-    System.out.println("Libro registrado correctamente")
+    System.out.println("Libro registrado correctamente");
   }
   public Libro buscarLibro(int codigo) throws ItemNotFound {
     Libro buscado = new Libro(codigo,"","","",0,"");
@@ -96,22 +96,22 @@ public class BibliotecaService {
     System.out.println("Solicitudes pendientes: " + solicitudesPendientes);
   }
 
-public void modificarLibro(int codigo, String titulo, String autor, String categoría, int anio, String estado) {
-  try {
-    Libro libro = buscarLibro(codigo);
-
-    libro.setTitulo(titulo);
-    libro.setAutor(autor);
-    libro.setCategoria(categoria);
-    libro.setAnio(anio);
-    libro.setEstado(estado);
-
-    System.out.println("Libro modificado correctamente");
-
-  } catch(ItemNotFound e) {
-    System.out.println("Libro no encontrado");
+  public void modificarLibro(int codigo, String titulo, String autor, String categoria, int anio, String estado) {
+    try {
+      Libro libro = buscarLibro(codigo);
+  
+      libro.setTitulo(titulo);
+      libro.setAutor(autor);
+      libro.setCategoria(categoria);
+      libro.setAnio(anio);
+      libro.setEstado(estado);
+  
+      System.out.println("Libro modificado correctamente");
+  
+    } catch(ItemNotFound e) {
+      System.out.println("Libro no encontrado");
+    }
   }
-}
   
 }
 
