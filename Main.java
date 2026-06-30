@@ -209,4 +209,18 @@ public class Main {
 
       sc.close();
   }
+  public static void cargarLibroIniciales(BibliotecaService biblioteca){
+    try{
+       biblioteca.registrarLibro(new Libro(101, "Programacion en Java", "Herbert Schildt", "Programacion", 2022, "Disponible"));
+       biblioteca.registrarLibro(new Libro(102, "Estructura de Datos", "Mark Allen Weiss", "Computacion", 2021, "Disponible"));
+       biblioteca.registrarLibro(new Libro(103, "Introduccion a Algoritmos", "Thomas Cormen", "Algoritmos", 2022, "Prestado"));
+       biblioteca.registrarLibro(new Libro(104, "Java Como Programar", "Deitel", "Programacion", 2020, "Disponible"));
+       biblioteca.registrarLibro(new Libro(105, "Clean Code", "Robert Martin", "Programacion", 2008, "Disponible"));
+       biblioteca.registrarLibro(new Libro(106, "Sistemas Operativos", "Silberschatz", "Computacion", 2019, "Disponible"));
+       biblioteca.registrarLibro(new Libro(107, "Redes de computadoras", "Tanenbaum", "Redes", 2021, "Prestado"));
+       biblioteca.registrarLibro(new Libro(108, "Bases de Datos", "Elmasri", "Base de Datos", 2020, "Disponible"));
+       biblioteca.registrarLibro(new Libro(109, "Ingenieria de Software", "Sommerville", "Software", 2018, "Disponible"));
+       biblioteca.registrarLibro(new Libro(110, "Patrones de Diseno", "Gamma", "Software", 1994, "Disponible"));
+    }
+  }
 }
