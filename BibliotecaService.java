@@ -14,35 +14,52 @@ public class BibliotecaService {
 
   public void buscarPorTitulo(String titulo) {
     String libros = biblioteca.getInOrder();
+    String [] lista = libros.split("\n");
+    boolean encontrado = false;
 
-    if(libros.toLowerCase().contains(titulo.toLowerCase())) {
-      System.out.println(libros);
-    } else {
-      System.out.println("No se encontraron libros con ese título");
+    for (String libro: lista){
+      if(libro.toLowerCase().contains(titulo.toLowerCase())) {
+        System.out.println(libros);
+        encontrado = true;
+      }
+    }
+    if (!encontrado){
+      System.out.println("No se encontro libros con ese titulo");
     }
   }
 
   public void buscarPorAutor(String autor) {
     String libros = biblioteca.getInOrder();
+    String [] lista = libros.split("\n");
+    boolean encontrado = false;
 
-    if(libros.toLowerCase().contains(autor.toLowerCase())) {
-      System.out.println(libros);
-    } else {
-      System.out.println("No se encontraron libros con ese autor");
+    for (String libro: lista){
+      if(libro.toLowerCase().contains(categoria.toLowerCase())) {
+        System.out.println(libros);
+        encontrado = true;
+      }
+    }
+    if (!encontrado){
+      System.out.println("No se encontro libros con ese categoria");
     }
   }
 
   public void buscarPorCategoria(String categoria) {
     String libros = biblioteca.getInOrder();
+    String [] lista = libros.split("\n");
+    boolean encontrado = false;
 
-    if(libros.toLowerCase().contains(categoria.toLowerCase())) {
-      System.out.println(libros);
-    } else {
-      System.out.println("No se encontraron libros con esa categoria");
+    for (String libro: lista){
+      if(libro.toLowerCase().contains(categoria.toLowerCase())) {
+        System.out.println(libros);
+        encontrado = true;
+      }
+    }
+    if (!encontrado){
+      System.out.println("No se encontro libros con ese categoria");
     }
   }
-
-
+  
   public void mostrarLibros(){
     System.out.println(biblioteca.getInOrder());
   }
