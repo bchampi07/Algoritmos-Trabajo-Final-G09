@@ -69,11 +69,32 @@ public class BibliotecaService {
       System.out.println("No existen libros con ese estado");
     }
   }
-  public void reporte(){
-    int total = biblioteca.countAllNodes();
-    System.out.println("Total libros: " + total);
+
+  public int contarPorEstado(String estado) {
+    String libros = biblioteca.getInOrder();
+    int contador = 0;
+
+    String[] partes = libros.split("Codigo:");
+
+    for(int i = 1; i < partes.length; i++) {
+      if(partes[i].toLowerCase().contains(estado.toLowerCase())) {
+        contador++;
+      }
+    }
+    return contador;
   }
-}
+  
+  public void reporte(int solicitudesPendientes) {
+    int total = biblioteca.countAllNodes();
+    int disponibles = contarPorEstado("Disponible");
+    int prestados = contarPorEstado("Prestado");
+
+    System.out.println("Reporte General");
+    System.out.println("Total libros: " + total);
+    System.out.println("Libros disponibles: " + disponibles);
+    System.out.println("Libros prestados: " + prestados);
+    System.out.println("Solicitudes pendientes: " + solicitudesPendientes);
+  }
 
 public void modificarLibro(int codigo, String titulo, String autor, String categoría, int anio, String estado) {
   try {
@@ -91,3 +112,6 @@ public void modificarLibro(int codigo, String titulo, String autor, String categ
     System.out.println("Libro no encontrado");
   }
 }
+  
+}
+
