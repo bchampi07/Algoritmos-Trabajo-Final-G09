@@ -1,9 +1,9 @@
 public class PrestamoService{
-  private Queue<SolicitudPrestamo> colaSolicitudes;
+  private LinkedQueue<SolicitudPrestamo> colaSolicitudes;
   private BibliotecaService biblioteca;
   public PrestamoService(BibliotecaService biblioteca){
     this.biblioteca = biblioteca;
-    colaSolicitudes = new Queue<>();
+    colaSolicitudes = new LinkedQueue<>();
   }
   public void registrarSolicitud(SolicitudPrestamo solicitud){
     colaSolicitudes.enqueue(solicitud);
