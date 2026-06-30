@@ -29,10 +29,10 @@ public class Main {
         sc.nextLine();
 
         switch(opcion) {
-          case 1:
+          case 1: {
             try {
 
-                System.out.print("Codigo: );
+                System.out.print("Codigo: ");
                 int codigo = sc.nextInt();
                 sc.nextLine();
 
@@ -46,7 +46,7 @@ public class Main {
                 String categoria = sc.nextLine();
 
                 System.out.print("Anio: ");
-                String anio = sc.nextLine();
+                int anio = sc.nextInt();
                 sc.nextLine();
 
                 Libro libro = new Libro(codigo,titulo,autor,categoria,anio,"Disponible");
@@ -57,12 +57,15 @@ public class Main {
             }
 
             break;
+            }
 
-          case 2:
+          case 2:{
 
               biblioteca.mostrarLibros();
               break;
-          case 3:
+            }
+            
+          case 3:{
               try {
                 System.out.print("Codigo: ");
 
@@ -77,13 +80,17 @@ public class Main {
               }
 
               break;
-            case 4:
+            }
+            
+            case 4: {
               System.out.print("Categoria: ");
               String categoria = sc.nextLine();
 
               biblioteca.buscarPorCategoria(categoria);
               break;
-            case 5:
+            }
+            
+            case 5: {
               System.out.print("Codigo del libro: ");
               int codigo = sc.nextInt();
               sc.nextLine();
@@ -106,7 +113,9 @@ public class Main {
 
               biblioteca.modificarLibro(codigo,titulo,autor,categoriaNueva,anio,estado);
               break;
-            case 6:
+              }
+            
+            case 6: {
               try {
                 System.out.print("Codigo del libro");
 
@@ -115,46 +124,54 @@ public class Main {
                 
                 biblioteca.eliminarLibro(codigo);
                 
-              }catch(Exceptin e ){
+              }catch(Exception e ){
                 System.out.println("No se pudo eliminar");
               }
               break;
+            }
 
-          case 7:
+          case 7: {
             System.out.print("Codigo estudiante: ");
             String codigoEstudiante = sc.nextLine();
-
+          
             System.out.print("Nombre estudiante: ");
             String nombre = sc.nextLine();
-
+          
+            System.out.print("Codigo libro: ");
+            int codigoLibroSolicitud = sc.nextInt();
+            sc.nextLine();
+          
             System.out.print("Fecha: ");
             String fecha = sc.nextLine();
-
+          
             SolicitudPrestamo solicitud =
               new SolicitudPrestamo(
                 codigoEstudiante,
                 nombre,
-                codigoLibro,
+                codigoLibroSolicitud,
                 fecha
               );
-            
+          
             prestamos.registrarSolicitud(solicitud);
-
+          
             break;
+            }
 
-          case 8:
+          case 8: {
 
             prestamos.mostrarSolicitudes();
 
             break;
+            }
 
-          case 9:
+          case 9: {
 
             prestamos.atenderSolicitud();
 
             break;
+            }
 
-          case 10:
+          case 10: {
             System.out.print("Codigo del libro: ");
 
             int codigoLibro = sc.nextInt();
@@ -163,18 +180,21 @@ public class Main {
             prestamos.devolverLibro(codigoLibro);
 
             break;
-
-          case 11:
+            }
+            
+          case 11: {
 
             biblioteca.reporte(prestamos.solicitudesPendientes());
 
             break;
+            }
 
-          case 12:
+          case 12: {
 
             System.out.println("Hasta luego.");
 
             break;
+            }
 
           default:
             System.out.println("Opcion invalida.");
