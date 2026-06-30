@@ -221,6 +221,17 @@ public class Main {
        biblioteca.registrarLibro(new Libro(108, "Bases de Datos", "Elmasri", "Base de Datos", 2020, "Disponible"));
        biblioteca.registrarLibro(new Libro(109, "Ingenieria de Software", "Sommerville", "Software", 2018, "Disponible"));
        biblioteca.registrarLibro(new Libro(110, "Patrones de Diseno", "Gamma", "Software", 1994, "Disponible"));
+
+       biblioteca.registrarLibro(new Libro(111, "Python Crash Course", "Eric Matthes", "Programacion", 2023, "Disponible"));
+       biblioteca.registrarLibro(new Libro(112, "Inteligencia Artificial", "Stuart Russell", "IA", 2021, "Prestado"));
+       biblioteca.registrarLibro(new Libro(113, "Machine Learning", "Tom Mitchell", "IA", 1997, "Disponible"));
+       biblioteca.registrarLibro(new Libro(114, "Mineria de Datos", "Jiawei Han", "Datos", 2012, "Disponible"));
+       biblioteca.registrarLibro(new Libro(115, "Analisis y Diseno de Sistema", "Kendall", "Sistemas", 2019, "Disponible"));
+       biblioteca.registrarLibro(new Libro(116, "Arquitectura de Computadoras", "Patterson", "Computacion", 2020, "Disponible"));
+       biblioteca.registrarLibro(new Libro(117, "Compiladores", "Aho", "Computacion", 2007, "Prestado"));
+       biblioteca.registrarLibro(new Libro(118, "Calculo I", "James Stewart", "Matematica", 2018, "Disponible"));
+       biblioteca.registrarLibro(new Libro(119, "Algebra Lineal", "Gilbert Strang", "Matematica", 2016, "Disponible"));
+       biblioteca.registrarLibro(new Libro(120, "Estadistica", "Walpole", "Matematica", 2015, "Disponible"));
     }
   }
 }
