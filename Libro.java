@@ -51,7 +51,12 @@ public class Libro implements Comparable<Libro> {
     return estado.equalsIgnoreCase("Disponible");
   }
 
-  @override
+  @Override
+  public int compareTo(Libro otro) {
+    return Integer.compare(this.codigo, otro.codigo);
+  }
+
+  @Override
   public String toString(){
     return "Codigo: " + codigo +
             " | Título: "+ titulo +
@@ -60,5 +65,4 @@ public class Libro implements Comparable<Libro> {
             " Año: " + anio + 
             " Estado: " + estado;
   }
-  
 }
