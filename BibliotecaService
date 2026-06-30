@@ -74,3 +74,20 @@ public class BibliotecaService {
     System.out.println("Total libros: " + total);
   }
 }
+
+public void modificarLibro(int codigo, String titulo, String autor, String categoría, int anio, String estado) {
+  try {
+    Libro libro = buscarLibro(codigo);
+
+    libro.setTitulo(titulo);
+    libro.setAutor(autor);
+    libro.setCategoria(categoria);
+    libro.setAnio(anio);
+    libro.setEstado(estado);
+
+    System.out.println("Libro modificado correctamente");
+
+  } catch(ItemNotFound e) {
+    System.out.println("Libro no encontrado");
+  }
+}
